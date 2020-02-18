@@ -1,3 +1,5 @@
-# MiniProjectII
+# N-Queens Problem - Mini Project II
 
-A description of this package.
+## Problem Description
+
+[N-Queens Problem.pdf](./N-Queens%20Problem.pdf)
