@@ -15,8 +15,7 @@ import Foundation
 /// - You are allowed to change the function header (args or return type)
 /// - Your total recursive calls should not exceed 120 times.
 
-//var count = 0
+var count = 0
 func solveQueens(board: inout Board) {
-//	count += 1
-
+  // count += 1
 }
