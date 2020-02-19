@@ -21,6 +21,19 @@ struct Board: CustomStringConvertible {
     return row >= 0 && row < self.size && col >= 0 && col < self.size
   }
 
+  func isDiagonallySafe(row: Int, col: Int) -> Bool {
+    // check diagonals
+    for d in 0..<self.size {
+      if (isOnBoard(row: row - d, col: col - d) && self.board[row-d][col-d] == "Q")
+        || (isOnBoard(row: row + d, col: col + d) && self.board[row+d][col+d] == "Q")
+        || (isOnBoard(row: row + d, col: col - d) && self.board[row+d][col-d] == "Q")
+        || (isOnBoard(row: row - d, col: col + d) && self.board[row-d][col+d] == "Q") {
+        return false
+      }
+    }
+    return true
+  }
+
   func isSafe(row: Int, col: Int) -> Bool {
     if !isOnBoard(row: row, col: col) {
       return false
@@ -33,16 +46,7 @@ struct Board: CustomStringConvertible {
     if rows != 0 || cols != 0 {
       return false
     }
-    // check diagonals
-    for d in 0..<self.size {
-      if (isOnBoard(row: row - d, col: col - d) && self.board[row-d][col-d] == "Q")
-        || (isOnBoard(row: row + d, col: col + d) && self.board[row+d][col+d] == "Q")
-        || (isOnBoard(row: row + d, col: col - d) && self.board[row+d][col-d] == "Q")
-        || (isOnBoard(row: row - d, col: col + d) && self.board[row-d][col+d] == "Q") {
-        return false
-      }
-    }
-    return true
+    return self.isDiagonallySafe(row: row, col: col)
   }
 
   mutating func place(row: Int, col: Int) {
